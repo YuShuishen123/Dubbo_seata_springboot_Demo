@@ -4,9 +4,11 @@ package dubbo_seata.dubbo_order;
 import dubbo_seata.dubbo_common.AccountInterface.AccountService;
 import dubbo_seata.dubbo_common.DTO.OrderDTO;
 import dubbo_seata.dubbo_common.orderInterface.OrderService;
+import dubbo_seata.dubbo_order.mapper.OrderMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -15,6 +17,8 @@ import org.apache.dubbo.config.annotation.DubboService;
 @DubboService
 @Slf4j
 public class OrderServiceImpl implements OrderService {
+
+    OrderMapper orderMapper;
 
     @DubboReference(
             loadbalance = "roundrobin",
@@ -25,6 +29,7 @@ public class OrderServiceImpl implements OrderService {
     )
     AccountService accountService;
     @Override
+    @Transactional
     public OrderDTO create(String userId, String commodityCode, int orderCount) {
         /*计算总价*/
         int orderMoney = orderCount * 10;
@@ -40,7 +45,9 @@ public class OrderServiceImpl implements OrderService {
         orderDTO.setCount(orderCount);
         orderDTO.setMoney(orderMoney);
 
-        /*持久化处理*/
+        /*创建订单*/
+        orderMapper.createOrder(orderDTO);
+
 
         return orderDTO;
 
