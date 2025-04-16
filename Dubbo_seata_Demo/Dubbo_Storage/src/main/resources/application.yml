@@ -14,6 +14,3 @@ dubbo:
     parameters:
       namespace: 65ca8fdb-2d8c-4cb7-8d21-7916701198f3
       group: dubbo_demo
-
-server:
-  port: 7871

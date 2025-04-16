@@ -5,6 +5,8 @@ import dubbo_seata.dubbo_common.Exception.CustomException;
 import dubbo_seata.dubbo_common.storageInterface.StorageService;
 import dubbo_seata.dubbo_storage.Mapper.StorageMapper;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -13,17 +15,25 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @DubboService
 public class StorageServiceImpl implements StorageService {
-
+    private static final Logger log = LoggerFactory.getLogger(StorageServiceImpl.class);
     /**
      * 注入持久化层接口
      */
     StorageMapper storageMapper;
 
+    public StorageServiceImpl(StorageMapper storageMapper) {
+        this.storageMapper = storageMapper;
+    }
+
     @Override
     @Transactional
     public void deduct(String commodityCode, int count) throws CustomException {
-        if(storageMapper.deduct(commodityCode,count) == 0) {
-            throw  new CustomException("库存修改失败", "500");
+        log.info("开始扣减库存:{}数量:{}", commodityCode, count);
+        int result = storageMapper.deduct(commodityCode, count);
+        log.info("UPDATE返回值: {}", result);
+        if (result == 0) {
+            throw new CustomException("库存修改失败", "500");
         }
+
     }
 }

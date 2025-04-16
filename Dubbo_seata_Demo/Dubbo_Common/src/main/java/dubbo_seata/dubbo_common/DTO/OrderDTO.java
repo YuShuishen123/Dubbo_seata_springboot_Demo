@@ -11,7 +11,8 @@ import java.io.Serializable;
  */
 @Data
 public class OrderDTO implements Serializable {
-    private Integer id;
+
+    private String orderId;
 
     private String userId;
 

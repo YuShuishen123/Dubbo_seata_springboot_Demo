@@ -1,9 +1,8 @@
 server:
-  port: 7853
-
+  port: 7871
 spring:
   application:
-    name: Dubbo-Account
+    name: Dubbo_Storage
   profiles:
     active: test
   cloud:
@@ -20,6 +19,6 @@ spring:
 spring:
   config:
     import:
-      - nacos:Dubbo-Account.yaml?groupp=Dubbo_demo
+      - nacos:Dubbo_Storage.yaml?groupp=Dubbo_demo
     activate:
       on-profile: test

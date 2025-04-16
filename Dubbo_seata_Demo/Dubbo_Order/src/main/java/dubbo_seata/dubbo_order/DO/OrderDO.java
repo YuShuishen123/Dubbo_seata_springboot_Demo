@@ -20,6 +20,9 @@ public class OrderDO {
     @TableField("user_id")
     private String userId;
 
+    @TableField("order_id")
+    private String orderId;
+
     @TableField("commodity_code")
     private String commodityCode;
 

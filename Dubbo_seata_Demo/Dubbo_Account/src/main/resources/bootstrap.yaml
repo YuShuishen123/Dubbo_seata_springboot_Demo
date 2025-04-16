@@ -1,3 +1,6 @@
+server:
+  port: 7853
+
 spring:
   application:
     name: Dubbo-Account
@@ -10,16 +13,13 @@ spring:
 #        import-check:
 #          enabled: false
         namespace: f1601434-b9d0-4aba-8ec3-d972134e5953
-        group: dubbo_demo
+        group: Dubbo_demo
         file-extension: yaml
 
 ---   # 切割文档内容,使其可以重复配置一项内容
 spring:
   config:
     import:
-      - nacos:Dubbo-Account.yaml?group=Dubbo_demo
+      - nacos:Dubbo-Account.yaml?groupp=Dubbo_demo
     activate:
       on-profile: test
-
-server:
-  port: 7853
