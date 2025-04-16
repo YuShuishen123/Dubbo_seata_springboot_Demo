@@ -1,0 +1,22 @@
+dubbo:
+  consumer:
+    threads: 200       # 消费者端的最大线程数
+    core-threads: 100  # 核心线程数
+    queues: 500        # 线程池队列大小
+  application:
+    name: Dubbo_Business
+    qos-port: 33333
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters:
+      namespace: 65ca8fdb-2d8c-4cb7-8d21-7916701198f3
+      group: dubbo_demo
+#      register-consumer-url: true # 启用消费者注册
+
+server:
+  port: 3344
+  tomcat:
+    accept-count: 1000
+    max-connections: 10000
+    threads:
+      max: 500

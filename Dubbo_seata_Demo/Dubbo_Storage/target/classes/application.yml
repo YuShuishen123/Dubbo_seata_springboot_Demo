@@ -1,0 +1,19 @@
+dubbo:
+  application:
+    name: Dubbo_Storage
+    logger: slf4j
+  protocol:
+    name: tri
+    port: 50052
+    # 线程池配置
+    threads: 500       # 最大线程数
+    core-threads: 200  # 核心线程数
+    queues: 1000       # 线程池队列大小
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters:
+      namespace: 65ca8fdb-2d8c-4cb7-8d21-7916701198f3
+      group: dubbo_demo
+
+server:
+  port: 7871

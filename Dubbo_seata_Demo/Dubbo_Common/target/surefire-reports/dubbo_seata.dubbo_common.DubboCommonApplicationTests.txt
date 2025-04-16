@@ -1,0 +1,29 @@
+-------------------------------------------------------------------------------
+Test set: dubbo_seata.dubbo_common.DubboCommonApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.131 s <<< FAILURE! -- in dubbo_seata.dubbo_common.DubboCommonApplicationTests
+dubbo_seata.dubbo_common.DubboCommonApplicationTests -- Time elapsed: 0.131 s <<< ERROR!
+java.lang.IllegalStateException: Could not load TestContextBootstrapper [class org.springframework.boot.test.context.SpringBootTestContextBootstrapper]. Specify @BootstrapWith's 'value' attribute or make the default bootstrapper class available.
+	at org.springframework.test.context.BootstrapUtils.resolveTestContextBootstrapper(BootstrapUtils.java:155)
+	at org.springframework.test.context.TestContextManager.<init>(TestContextManager.java:122)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.getTestContextManager(SpringExtension.java:294)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.beforeAll(SpringExtension.java:113)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]: Unresolvable class definition; nested exception is java.lang.NoClassDefFoundError: org/springframework/test/context/aot/AotTestAttributes
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:158)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:178)
+	at org.springframework.test.context.BootstrapUtils.resolveTestContextBootstrapper(BootstrapUtils.java:147)
+	... 4 more
+Caused by: java.lang.NoClassDefFoundError: org/springframework/test/context/aot/AotTestAttributes
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3373)
+	at java.base/java.lang.Class.getConstructor0(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredConstructor(Class.java:2754)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:148)
+	... 6 more
+Caused by: java.lang.ClassNotFoundException: org.springframework.test.context.aot.AotTestAttributes
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	... 11 more
+
