@@ -12,7 +12,6 @@ import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -28,12 +27,13 @@ public class OrderServiceImpl implements OrderService {
     OrderMapper orderMapper;
     OrderMapStruct orderMapStruct;
 
-    @DubboReference(
+ /*   @DubboReference(
             loadbalance = "roundrobin",
             // 建议增加这些配置：
             timeout = 3000,  // 超时时间(ms)
             retries = 0     // 禁用重试（与failfast配合）
-    )
+    )*/
+    @DubboReference
     AccountService accountService;
 
 
@@ -44,7 +44,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    @Transactional
     public OrderDTO create(String userId, String commodityCode, int orderCount) throws CustomException{
 
             /*计算总价*/

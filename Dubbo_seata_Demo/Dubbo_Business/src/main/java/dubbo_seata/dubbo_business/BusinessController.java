@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/business")
-public class Controller {
+public class BusinessController {
 
     final BusinessService businessService;
 
-    public Controller(BusinessService businessService) {
+    public BusinessController(BusinessService businessService) {
         this.businessService = businessService;
     }
+
 
     /**
      * 购买

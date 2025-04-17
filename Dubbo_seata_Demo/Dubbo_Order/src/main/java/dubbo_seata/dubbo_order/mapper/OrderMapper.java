@@ -15,7 +15,6 @@ public interface OrderMapper extends BaseMapper<OrderDO> {
 
     /**
      * 创建订单
-     *
      * @param orderDO 订单对象
      * @return 创建订单结果
      */

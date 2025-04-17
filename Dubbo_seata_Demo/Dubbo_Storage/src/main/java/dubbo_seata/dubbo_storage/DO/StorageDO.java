@@ -30,5 +30,5 @@ public class StorageDO{
      * 库存数量
      */
     @TableField("count")
-    private Integer money;
+    private Integer count;
 }

@@ -2,6 +2,7 @@ package dubbo_seata.dubbo_business.service;
 
 
 import dubbo_seata.dubbo_common.DTO.OrderDTO;
+import dubbo_seata.dubbo_common.Exception.CustomException;
 
 /**
  * @author Yu'S'hui'shen
@@ -16,5 +17,5 @@ public interface BusinessService {
      * @param commodityCode     商品编号
      * @param orderCount        购买数量
      */
-    OrderDTO purchase(String userId, String commodityCode, int orderCount);
+    OrderDTO purchase(String userId, String commodityCode, int orderCount) throws CustomException;
 }

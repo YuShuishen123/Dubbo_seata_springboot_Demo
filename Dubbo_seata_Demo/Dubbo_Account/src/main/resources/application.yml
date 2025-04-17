@@ -14,9 +14,20 @@ dubbo:
     parameters:
       namespace: 65ca8fdb-2d8c-4cb7-8d21-7916701198f3
       group: dubbo_demo
-#  config-center:
-#    namespace: test
-#    group: Dubbo_demo
-#    address: nacos://127.0.0.1:8848
-#    config-file: Dubbo_Account.properties
+
+seata:
+  enabled: true
+  application-id: dubbo-samples-seata
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+    grouplist:
+      default: ${seata.address:127.0.0.1}:${seata.port:8091}
+  registry:
+    type: file
+  config:
+    type: file
+
+
 

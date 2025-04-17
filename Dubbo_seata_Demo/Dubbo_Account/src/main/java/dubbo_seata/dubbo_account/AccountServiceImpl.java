@@ -5,7 +5,6 @@ import dubbo_seata.dubbo_common.AccountInterface.AccountService;
 import dubbo_seata.dubbo_common.Exception.CustomException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
-import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -22,7 +21,6 @@ public class AccountServiceImpl implements AccountService {
         this.accountMapper = accountMapper;
     }
 
-    @Transactional
     @Override
     public void debit(String userId, int money) throws CustomException{
         log.info("开始扣减余额");

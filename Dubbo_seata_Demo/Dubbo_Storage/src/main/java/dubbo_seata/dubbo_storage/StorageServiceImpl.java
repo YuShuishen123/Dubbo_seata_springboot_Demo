@@ -7,7 +7,6 @@ import dubbo_seata.dubbo_storage.Mapper.StorageMapper;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -26,11 +25,14 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    @Transactional
     public void deduct(String commodityCode, int count) throws CustomException {
         log.info("开始扣减库存:{}数量:{}", commodityCode, count);
         int result = storageMapper.deduct(commodityCode, count);
         log.info("UPDATE返回值: {}", result);
+        log.info("除零异常发生前,库存扣减发生后,该商品库存:{}",storageMapper.selectByCommodityCode(commodityCode));
+        /*抛出异常测试回滚*/
+//        throw new CustomException("测试错误",400);
+
         if (result == 0) {
             log.info("抛出异常");
             throw new CustomException("库存错误", 500);

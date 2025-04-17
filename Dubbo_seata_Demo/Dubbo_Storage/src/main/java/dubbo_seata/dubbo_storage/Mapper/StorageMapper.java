@@ -27,4 +27,14 @@ public interface StorageMapper extends BaseMapper<StorageDO> {
         return update(null, wrapper);
     }
 
+    /**
+     * 根据商品编码查询库存
+     *
+     * @param commodityCode 商品编码
+     * @return 库存
+     */
+    default StorageDO selectByCommodityCode(@Param("commodityCode") String commodityCode) {
+        return selectOne(new UpdateWrapper<StorageDO>().eq("commodity_code", commodityCode));
+    }
+
 }
