@@ -2,6 +2,7 @@ package dubbo_seata.dubbo_business;
 
 import dubbo_seata.dubbo_business.service.BusinessService;
 import dubbo_seata.dubbo_common.DTO.OrderDTO;
+import dubbo_seata.dubbo_common.Exception.Response;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,10 +27,9 @@ public class Controller {
      * @param orderCount    数量
      */
     @GetMapping("/purchase")
-    public OrderDTO purchase(@RequestParam("userId") String userId,
-                             @RequestParam("commodityCode") String commodityCode,
-                             @RequestParam("count") int orderCount) {
-
-        return businessService.purchase(userId,commodityCode,orderCount);
+    public Response<OrderDTO> purchase(@RequestParam("userId") String userId,
+                                       @RequestParam("commodityCode") String commodityCode,
+                                       @RequestParam("count") int orderCount) {
+        return Response.success("创建订单成功",businessService.purchase(userId,commodityCode,orderCount));
     }
 }

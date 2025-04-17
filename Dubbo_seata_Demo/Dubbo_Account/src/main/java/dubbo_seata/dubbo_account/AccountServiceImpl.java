@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Yu'S'hui'shen
  */
 
-@DubboService
+@DubboService(parameters = {"exceptionToBiz", "true"})
 @Slf4j
 public class AccountServiceImpl implements AccountService {
 
@@ -24,11 +24,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public String debit(String userId, int money) throws CustomException{
+    public void debit(String userId, int money) throws CustomException{
+        log.info("开始扣减余额");
         /*调用更新余额接口*/
-        if(accountMapper.updateAccount(userId,money) == 0) {
-            throw  new CustomException("扣减余额失败", "500");
+        int result = accountMapper.updateAccount(userId,money);
+        log.info("result:{}", result);
+        if(result == 0) {
+            log.info("扣减余额失败,抛出异常");
+            throw  new CustomException("扣减余额失败", 500);
         }
-        return "扣减余额成功";
     }
 }

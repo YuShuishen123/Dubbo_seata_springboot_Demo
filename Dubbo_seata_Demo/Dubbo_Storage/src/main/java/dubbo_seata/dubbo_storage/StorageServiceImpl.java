@@ -32,8 +32,8 @@ public class StorageServiceImpl implements StorageService {
         int result = storageMapper.deduct(commodityCode, count);
         log.info("UPDATE返回值: {}", result);
         if (result == 0) {
-            throw new CustomException("库存修改失败", "500");
+            log.info("抛出异常");
+            throw new CustomException("库存错误", 500);
         }
-
     }
 }
