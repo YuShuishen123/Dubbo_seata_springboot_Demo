@@ -1,7 +1,3 @@
-spring:
-  profiles:
-    active: test
-
 dubbo:
   consumer:
     threads: 200       # 消费者端的最大线程数
@@ -10,6 +6,13 @@ dubbo:
   application:
     name: Dubbo_Business
     qos-port: 33333
+  protocol:
+    name: tri
+    port: 50059
+    # 线程池配置
+    threads: 500       # 最大线程数
+    core-threads: 200  # 核心线程数
+    queues: 1000       # 线程池队列大小
   registry:
     address: nacos://127.0.0.1:8848
     parameters:
@@ -17,13 +20,13 @@ dubbo:
       group: dubbo_demo
 #      register-consumer-url: true # 启用消费者注册
 
+spring:
+  application:
+    name: Dubbo_Business
+  profiles:
+    active: test
 server:
   port: 3344
-  tomcat:
-    accept-count: 1000
-    max-connections: 10000
-    threads:
-      max: 500
 
 seata:
   enabled: true

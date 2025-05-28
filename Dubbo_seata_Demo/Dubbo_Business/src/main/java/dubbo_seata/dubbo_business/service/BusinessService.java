@@ -8,7 +8,6 @@ import dubbo_seata.dubbo_common.Exception.CustomException;
  * @author Yu'S'hui'shen
  */
 
-
 public interface BusinessService {
 
     /**

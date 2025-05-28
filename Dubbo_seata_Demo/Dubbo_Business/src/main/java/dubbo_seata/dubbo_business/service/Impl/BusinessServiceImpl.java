@@ -7,12 +7,12 @@ import dubbo_seata.dubbo_common.orderInterface.OrderService;
 import dubbo_seata.dubbo_common.storageInterface.StorageService;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 
 /**
  * @author Yu'S'hui'shen
  */
-@Service
+@DubboService
 public class BusinessServiceImpl implements BusinessService {
 
     @DubboReference

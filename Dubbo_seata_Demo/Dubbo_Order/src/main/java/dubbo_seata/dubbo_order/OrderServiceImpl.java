@@ -33,9 +33,12 @@ public class OrderServiceImpl implements OrderService {
             timeout = 3000,  // 超时时间(ms)
             retries = 0     // 禁用重试（与failfast配合）
     )*/
-    @DubboReference
+ @DubboReference(
+         interfaceClass = AccountService.class,
+         mock = "dubbo_seata.dubbo_common.AccountInterface.AccountServiceMock",
+         parameters = {"timeout", "3000"}
+ )
     AccountService accountService;
-
 
     public OrderServiceImpl(OrderMapStruct orderMapStruct, AccountService accountService, OrderMapper orderMapper){
         this.orderMapStruct = orderMapStruct;

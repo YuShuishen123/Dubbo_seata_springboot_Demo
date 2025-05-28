@@ -3,6 +3,7 @@ dubbo:
     threads: 200       # 消费者端的最大线程数
     core-threads: 100  # 核心线程数
     queues: 500        # 线程池队列大小
+    mock: true
   application:
     name: Dubbo_Order
     logger: slf4j

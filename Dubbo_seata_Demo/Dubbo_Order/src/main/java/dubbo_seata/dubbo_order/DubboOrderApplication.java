@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Yu'S'hui'shen
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "dubbo_seata")
 @EnableDubbo
 public class DubboOrderApplication {
 

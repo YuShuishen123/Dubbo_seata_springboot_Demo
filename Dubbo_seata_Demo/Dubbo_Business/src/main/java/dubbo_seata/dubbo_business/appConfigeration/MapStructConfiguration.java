@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Yu'S'hui'shen
+ * @description 配置全局异常处理
  */
 @Configuration
 public class MapStructConfiguration {

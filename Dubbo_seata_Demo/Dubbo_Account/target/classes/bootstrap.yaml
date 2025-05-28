@@ -10,8 +10,6 @@ spring:
     nacos:
       server-addr: 127.0.0.1:8848
       config:
-#        import-check:
-#          enabled: false
         namespace: f1601434-b9d0-4aba-8ec3-d972134e5953
         group: Dubbo_demo
         file-extension: yaml

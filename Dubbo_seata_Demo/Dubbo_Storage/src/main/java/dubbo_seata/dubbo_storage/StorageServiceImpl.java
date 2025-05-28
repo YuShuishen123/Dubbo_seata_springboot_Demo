@@ -26,12 +26,9 @@ public class StorageServiceImpl implements StorageService {
 
     @Override
     public void deduct(String commodityCode, int count) throws CustomException {
-        log.info("开始扣减库存:{}数量:{}", commodityCode, count);
+        log.info("开始扣减库存,商品编码:{},扣减数量:{}", commodityCode, count);
         int result = storageMapper.deduct(commodityCode, count);
         log.info("UPDATE返回值: {}", result);
-        log.info("除零异常发生前,库存扣减发生后,该商品库存:{}",storageMapper.selectByCommodityCode(commodityCode));
-        /*抛出异常测试回滚*/
-//        throw new CustomException("测试错误",400);
 
         if (result == 0) {
             log.info("抛出异常");
